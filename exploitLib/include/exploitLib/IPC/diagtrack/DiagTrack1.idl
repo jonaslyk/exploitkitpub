@@ -1,0 +1,263 @@
+import "oaidl.idl";
+import "ocidl.idl"; 
+
+[
+uuid(4c9dbf19-d39e-4bb9-90ee-8f7179b20283),
+version(1.0),
+]
+interface DefaultIfName
+{
+
+	//typedef Struct_12_t
+	//{
+	//	long 	StructMember0;
+	//	short 	StructMember1;
+	//	short 	StructMember2;
+	//	byte 	StructMember3[8];
+	//}Struct_12_t;
+
+	typedef struct Struct_24_t
+	{
+		GUID 	StructMember0;
+	}Struct_24_t;
+
+	typedef struct Struct_102_t
+	{
+		GUID 	StructMember0;
+		hyper 	StructMember1;
+		long 	StructMember2;
+		long 	StructMember3;
+		hyper 	StructMember4;
+		/* enum_16 */ short 	StructMember5;
+	}Struct_102_t;
+
+	typedef struct Struct_164_t
+	{
+		long 	StructMember0;
+		long 	StructMember1;
+		long 	StructMember2;
+		long 	StructMember3;
+		long 	StructMember4;
+		long 	StructMember5;
+		long 	StructMember6;
+		long 	StructMember7;
+		long 	StructMember8;
+	}Struct_164_t;
+
+	typedef struct Struct_182_t
+	{
+		long 	StructMember0;
+		long 	StructMember1;
+	}Struct_182_t;
+
+	typedef struct Struct_274_t
+	{
+		/* enum_16 */ short 	StructMember0;
+		[unique][string] wchar_t* 	StructMember1;
+	}Struct_274_t;
+
+	typedef struct Struct_320_t
+	{
+		GUID 	StructMember0;
+		GUID 	StructMember1;
+		long 	StructMember2;
+	}Struct_320_t;
+
+long IsScenarioActive(
+	[in]struct Struct_24_t* arg_1, 
+	[out]long *arg_2);
+
+long EscalateScenario(
+	[in]struct Struct_24_t* arg_1, 
+	[in]/* enum_16 */ short arg_2, 
+	[in][string] wchar_t* arg_3, 
+	[in]long arg_4, 
+	[in]long arg_5, 
+	[in]long arg_6, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_7, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_8);
+
+long EscalateScenarioAsync(
+	[in]struct Struct_24_t* arg_1, 
+	[in]/* enum_16 */ short arg_2, 
+	[in][string] wchar_t* arg_3, 
+	[in]long arg_4, 
+	[in]long arg_5, 
+	[in]long arg_6, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_7, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_8);
+
+long IsEscalationRunning(
+	[in]struct Struct_24_t* arg_1, 
+	[out]long *arg_2);
+
+long DownloadLatestSettingsForNamespace(
+	[in][string] wchar_t* arg_1, 
+	[in][string] wchar_t* arg_2, 
+	[in]long arg_3, 
+	[in]long arg_4, 
+	[in]long arg_5);
+
+long DownloadLatestSettingsForNamespaceAsync(
+	[in][string] wchar_t* arg_1, 
+	[in][string] wchar_t* arg_2, 
+	[in]long arg_3, 
+	[in]long arg_4, 
+	[in]long arg_5);
+
+long GetActiveScenarioList(
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_2)] /*  */ struct Struct_24_t** arg_1, 
+	[out]long *arg_2);
+
+long ForceUpload(
+	[in]char arg_1, 
+	[in]long arg_2, 
+	[in]long arg_3);
+
+long ResetUsageMetrics(
+);
+
+long IsTraceRunning(
+	[in]/* enum_16 */ short arg_1, 
+	[in]struct Struct_102_t* arg_2, 
+	[out][ref]/* enum_16 */ short *arg_3);
+
+long GetActiveTraceRuntime(
+	[in]/* enum_16 */ short arg_1, 
+	[out]hyper *arg_2, 
+	[out]hyper *arg_3);
+
+long GetKnownTraceList(
+	[in]/* enum_16 */ short arg_1, 
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_3)] /*  */ struct Struct_102_t** arg_2, 
+	[out]long *arg_3);
+
+long DownloadLatestSettings(
+	[in]long arg_1, 
+	[in]long arg_2);
+
+long ReloadSettings(
+);
+
+long UpdateTimerConfiguration(
+	[in][string] wchar_t* arg_1, 
+	[in]struct Struct_164_t* arg_2);
+
+long ClearTimerConfiguration(
+	[in][string] wchar_t* arg_1);
+
+long GetNextScheduledFireTime(
+	[in][string] wchar_t* arg_1, 
+	[out]long *arg_2, 
+	[out]struct Struct_182_t* arg_3);
+
+long GetTimerConfiguration(
+	[in][string] wchar_t* arg_1, 
+	[out]struct Struct_164_t* arg_2, 
+	[out]long *arg_3);
+
+long GetCustomTraceList(
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_2)] /*  */ [string] wchar_t*** arg_1, 
+	[out]long *arg_2);
+
+long StartCustomTrace(
+	[in][string] const wchar_t* arg_1, 
+	[in]hyper arg_2);
+
+long SnapCustomTrace(
+	[in][string] const wchar_t* arg_1);
+
+long StopCustomTrace(
+);
+
+long EscalateScenario2(
+	[in]struct Struct_24_t* arg_1, 
+	[in]/* enum_16 */ short arg_2, 
+	[in][string] wchar_t* arg_3, 
+	[in]long arg_4, 
+	[in]long arg_5, 
+	[in]/* enum_16 */ short arg_6, 
+	[in]long arg_7, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_7)] /*  */ [string] wchar_t** arg_8, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_7)] /*  */ [string] wchar_t** arg_9);
+
+long EscalateScenarioAsync2(
+	[in]struct Struct_24_t* arg_1, 
+	[in]/* enum_16 */ short arg_2, 
+	[in][string] wchar_t* arg_3, 
+	[in]long arg_4, 
+	[in]long arg_5, 
+	[in]/* enum_16 */ short arg_6, 
+	[in]long arg_7, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_7)] /*  */ [string] wchar_t** arg_8, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_7)] /*  */ [string] wchar_t** arg_9);
+
+long GetActiveTraceInfo(
+	[in]/* enum_16 */ short arg_1, 
+	[out]struct Struct_102_t* arg_2);
+
+long EnableWERLocalReports(
+);
+
+long RestoreWERLocalReportsSettings(
+);
+
+long QueryWERLocalReportsEnabled(
+	[out][ref][string] wchar_t** arg_1);
+
+long IsEscalationRunningEx(
+	[in]struct Struct_24_t* arg_1, 
+	[out]long *arg_2, 
+	[out]GUID* arg_3);
+
+long QueryDiagnosticCollectionState(
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_2)] /*  */ struct Struct_274_t** arg_1, 
+	[out]long *arg_2);
+
+long EscalateScenario3(
+	[in][string] wchar_t* arg_1, 
+	[in][string] wchar_t* arg_2, 
+	[in]long arg_3, 
+	[in]long arg_4, 
+	[in]/* enum_16 */ short arg_5, 
+	[in]long arg_6, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_7, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_8, 
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_10)] /*  */ struct Struct_320_t** arg_9, 
+	[out]long *arg_10);
+
+long GetIdsFromCategory(
+	[in][string] wchar_t* arg_1, 
+	[out][ref][size_is(, *arg_3)]long **arg_2, 
+	[out]long *arg_3);
+
+long GetRunningTraces(
+	[in][string] wchar_t* arg_1, 
+	[out][ref][size_is(, *arg_3)]long **arg_2, 
+	[out]long *arg_3);
+
+long GetContextProperty(
+	[in][string] wchar_t* arg_1, 
+	[out][ref][string] wchar_t** arg_2);
+
+long GetRunningEscalationsForContext(
+	[in][string] wchar_t* arg_1, 
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_3)] /*  */ struct Struct_320_t** arg_2, 
+	[out]long *arg_3);
+
+long EscalateScenarioAsync3(
+	[in][string] wchar_t* arg_1, 
+	[in][string] wchar_t* arg_2, 
+	[in]long arg_3, 
+	[in]long arg_4, 
+	[in]/* enum_16 */ short arg_5, 
+	[in]long arg_6, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_7, 
+	[in] /* [DBG] FC_BOGUS_ARRAY */ [size_is(arg_6)] /*  */ [string] wchar_t** arg_8, 
+	[out][ref] /* [DBG] FC_BOGUS_ARRAY */ [size_is(, *arg_10)] /*  */ struct Struct_320_t** arg_9, 
+	[out]long *arg_10);
+
+long GetApiVersion(
+	[out]long *arg_1, 
+	[out]long *arg_2);
+} 
